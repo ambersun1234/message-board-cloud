@@ -1,4 +1,6 @@
 # message-board-cloud
+[![](https://img.shields.io/github/license/ambersun1234/message-board-cloud)](./LICENSE) [![](https://img.shields.io/docker/image-size/ambersun1234/message-board-cloud?sort=date)](https://hub.docker.com/repository/docker/ambersun1234/message-board-cloud)
+
 This project re-write ambersun1234's old project [message-board](https://github.com/ambersun1234/message-board)
 
 ## Introduction

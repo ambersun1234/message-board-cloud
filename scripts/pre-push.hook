@@ -1,0 +1,23 @@
+#!/usr/bin/env bash
+
+source ./scripts/colors.sh
+
+RED=
+YELLOW=
+BLUE=
+WHITE=
+CYAN=
+NC=
+
+FORMATTER=gofmt
+
+set_colors
+
+DIFF=$(${FORMATTER} -d .)
+LINES=$(echo ${TEXT} | wc -l)
+if [ $LINES -gt 0 ] && [ ! -z "$DIFF" ]; then
+    echo -e "${DIFF}\n${RED}Please format your code before submit.${NC}"
+    exit 1;
+else
+    echo -e "${GREEN}File format check done.${NC}"
+fi

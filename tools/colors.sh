@@ -12,6 +12,7 @@ set_colors() {
     BLUE='\033[1;34m'
     WHITE='\033[1;37m'
     CYAN='\033[1;36m'
+    GREEN='\033[1;32m'
     NC='\033[0m' # No Color
   fi
 }

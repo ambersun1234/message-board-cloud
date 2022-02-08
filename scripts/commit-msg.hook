@@ -16,9 +16,10 @@ YELLOW=
 BLUE=
 WHITE=
 CYAN=
+GREEN=
 NC=
 
-source ./scripts/colors.sh
+source ./tools/colors.sh
 
 #
 # Set the hook editor, using the same approach as git.

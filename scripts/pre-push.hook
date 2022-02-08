@@ -1,12 +1,13 @@
 #!/usr/bin/env bash
 
-source ./scripts/colors.sh
+source ./tools/colors.sh
 
 RED=
 YELLOW=
 BLUE=
 WHITE=
 CYAN=
+GREEN=
 NC=
 
 FORMATTER=gofmt

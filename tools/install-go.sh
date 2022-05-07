@@ -30,7 +30,8 @@ if [ "$checksum" != "$correct_checksum" ]; then
 fi
 
 sudo rm -rf /usr/local/go && sudo tar -C /usr/local -xzf ${folder}/${filename}
-export PATH=$PATH:/usr/local/go/bin >> ${env_file}
+echo export PATH=$PATH:/usr/local/go/bin >> ${env_file}
+echo export GO111MODULE=on >> ~/.bashrc
 source ${env_file}
 
 version=$(go version)

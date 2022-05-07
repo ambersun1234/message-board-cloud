@@ -166,7 +166,7 @@ validate_commit_message() {
   # 3. Capitalize the subject line
   # ------------------------------------------------------------------------------
 
-  [[ ${COMMIT_SUBJECT_TO_PROCESS} =~ ^[[:blank:]]*([[:upper:]]{1}[[:lower:]]*|[[:digit:]]+)([[:blank:]]|[[:punct:]]|$) ]]
+  [[ ${COMMIT_SUBJECT_TO_PROCESS} =~ ^((\(.*\))|(\[.*\])|(\{.*\})|[[:blank:]])*([[:upper:]]{1}[[:lower:]]*|[[:digit:]]+)([[:blank:]]|[[:punct:]]|$) ]]
   test $? -eq 0 || add_warning 1 "Capitalize the subject line"
 
   # 4. Do not end the subject line with a period

@@ -27,6 +27,8 @@ func NewGinConfig(address string, logger gin.HandlerFunc, recovery gin.HandlerFu
 }
 
 func (g *GinConfig) RunGinServer() error {
+	gin.SetMode(gin.ReleaseMode)
+
 	g.server = gin.New()
 	g.server.Use(g.Logger)
 	g.server.Use(g.Recovery)
@@ -35,10 +37,11 @@ func (g *GinConfig) RunGinServer() error {
 		g.server.Handle(method, route, g.Handler)
 	}
 
+	log.Entry.Infoln("Gin server listening on", g.Address)
 	if err := g.server.Run(g.Address); err != nil {
 		log.Entry.WithError(err).Errorln("Error to start server")
 		return err
 	}
-	log.Entry.Infoln("Gin server listening on", g.Address)
+
 	return nil
 }

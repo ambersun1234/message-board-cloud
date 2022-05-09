@@ -5,20 +5,20 @@ import (
 
 	log "cloud/users/logger"
 	userspb "cloud/users/proto/users"
-	"cloud/users/service"
+	"cloud/users/service/users"
 
 	"google.golang.org/grpc"
 )
 
 type GrpcConfig struct {
 	Address     string
-	UsersServer *service.UsersServer
+	UsersServer *users.UsersServer
 	listener    net.Listener
 
 	server *grpc.Server
 }
 
-func NewGrpcConfig(address string, userServer *service.UsersServer) *GrpcConfig {
+func NewGrpcConfig(address string, userServer *users.UsersServer) *GrpcConfig {
 	return &GrpcConfig{
 		Address:     address,
 		UsersServer: userServer,

@@ -2,12 +2,14 @@ package main
 
 import (
 	"fmt"
+	"os"
 
 	log "cloud/users/logger"
 	"cloud/users/server"
-	"cloud/users/service"
+	"cloud/users/service/users"
 
 	"github.com/gin-gonic/gin"
+	"github.com/sirupsen/logrus"
 )
 
 var (
@@ -20,8 +22,18 @@ var (
 )
 
 func main() {
+	// logger
+	config := log.LoggerConfig{
+		Formatter: &logrus.JSONFormatter{},
+		Data:      logrus.Fields{"service": "users"},
+		Level:     logrus.DebugLevel,
+		Output:    os.Stdout,
+		Caller:    true,
+	}
+	log.New(config)
+
 	// gRPC server
-	grpcConfig := server.NewGrpcConfig(grpcAddress, &service.UsersServer{})
+	grpcConfig := server.NewGrpcConfig(grpcAddress, &users.UsersServer{})
 	go grpcConfig.RunGrpcServer()
 	log.Entry.Infoln("gRPC server listening on", grpcAddress)
 
